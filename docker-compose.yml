@@ -1,0 +1,41 @@
+version: "0"
+
+services:
+    frontend:
+        build: ./frontend
+        container_name: frontend
+        tty: true
+        networks:
+            net-10.9.0.0:
+                ipv4_address: 10.9.0.5
+
+    backend:
+        build: ./backend
+        container_name: backend
+        tty: true
+        networks:
+            net-10.9.0.0:
+                ipv4_address: 10.9.0.5
+
+
+    database:
+        build: ./database
+        container_name: mysql-10.9.0.6
+        command: --default-authentication-plugin=mysql_native_password
+        tty: true
+        restart: always
+        cap_add:
+                - SYS_NICE  # CAP_SYS_NICE (surprise an error message)
+        volumes:
+                - ./database/sql_data:/var/lib/mysql
+        networks:
+            net-10.9.0.0:
+                ipv4_address: 10.9.0.6
+
+networks:
+    net-10.9.0.0:
+        name: net-10.9.0.0
+        ipam:
+            config:
+                - subnet: 10.9.0.0/24
+

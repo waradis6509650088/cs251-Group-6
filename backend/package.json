@@ -1,0 +1,14 @@
+{
+  "name": "251backend",
+  "version": "1.0.0",
+  "description": "backend for meo stock manager",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "meo group 6",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
