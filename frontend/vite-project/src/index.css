@@ -1,0 +1,13 @@
+.app {
+    display: flex;
+  }
+  
+  .left-column {
+    flex: 0 0 30%; /* This sets the left column to 30% width */
+    background-color: #f0f0f0; /* Just for visualization */
+  }
+  
+  .right-column {
+    flex: 1; /* This makes the right column take up the remaining space */
+    background-color: #ccc; /* Just for visualization */
+  }
