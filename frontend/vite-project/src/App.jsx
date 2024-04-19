@@ -1,7 +1,11 @@
-import Header from './Header.jsx'
+import Sidebar from './Sidebar.jsx'
+import Mainpage from './Mainpage.jsx'
 function App() {
   return (
-    <Header/>
+    <body>
+      <Sidebar/>
+      <Mainpage/>
+    </body>
   );
 
 }

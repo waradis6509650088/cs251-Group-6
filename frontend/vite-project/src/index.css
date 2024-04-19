@@ -1,13 +1,54 @@
-.app {
-    display: flex;
-  }
-  
-  .left-column {
-    flex: 0 0 30%; /* This sets the left column to 30% width */
-    background-color: #f0f0f0; /* Just for visualization */
-  }
-  
-  .right-column {
-    flex: 1; /* This makes the right column take up the remaining space */
-    background-color: #ccc; /* Just for visualization */
-  }
+.sidebar {
+  background-color: #f0ebd1;
+  height: 100vh;
+  width: 18%;
+  float: left;
+}
+
+.mainpage {
+  height: 100vh;
+  padding-left: 23%;
+  padding-top: 50px;
+}
+
+.catlogo {
+  height: 12%;
+  width: auto;
+  padding-left: 30%;
+  padding-top: 30%;
+}
+
+.sidebar-button {
+  border: 1px #f0ebd1;
+  background-color: #f0ebd1;
+  height:50px;
+  width:100%;
+  cursor:pointer;
+}
+
+.sidebar-button:hover {
+  background-color: #c4bfa3;
+}
+
+.username {
+  padding-top: 0;
+  margin: 0;
+  text-align: center;
+}
+
+th {
+  text-align: left;
+}
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
