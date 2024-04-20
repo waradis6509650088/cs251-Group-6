@@ -5,15 +5,15 @@ body {
 .sidebar {
   background-color: #f0ebd1;
   height: 100vh;
-  width: 18%;
+  width: 250px;
   float: left;
   position:fixed;
 }
 
 .sidebar .catlogo {
-  height: 12%;
+  height: 100px;
   width: auto;
-  padding-left: 30%;
+  padding-left: 29%;
   padding-top: 30%;
 }
 
@@ -36,34 +36,18 @@ body {
 }
 
 .mainpage {
-  height: 100vh;
-  padding-left: 23%;
-  padding-top: 50px;
-}
-
-.mainpage .ordertable {
-  background-color: #f0ebd1;
-  padding: 25px;
-  width: fit-content;
-  border-radius: 20px;
+  height: 100%;
+  padding-left: 320px;
+  padding-top: 30px;
+  overflow-y: hidden;
+  position: relative;
 }
 
 .mainpage table {
-  /* border-collapse: collapse; */
   border-spacing: 0px;
   width: 100%;
   border: 0px solid #ccc;
   border-radius: 20px;
-}
-
-.mainpage .table1 {
-  border: 0px solid #ccc;
-  height: 150px;
-  width: 500px; 
-  border-radius: 20px;
-  overflow: scroll;
-  overflow-x: hidden;
-  background-color: white;
 }
 
 .mainpage thead th {
@@ -75,11 +59,6 @@ body {
   padding:5px;
   text-align:left;
   vertical-align: center;
-}
-
-.mainpage th:first-child {
-  border-top-left-radius: 15px;
-  border-style: hidden;
 }
 
 .mainpage td{
@@ -94,4 +73,81 @@ body {
 
 .mainpage tbody {
   padding-top: 5px;
+}
+
+.mainpage .inventorytable {
+  background-color: #f0ebd1;
+  padding: 25px;
+  width: fit-content;
+  border-radius: 20px;
+}
+
+.mainpage .inventorytable .table{
+  border: 0px solid #ccc;
+  height: 150px;
+  width: 500px; 
+  border-radius: 20px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  margin-top: 10px
+}
+
+.mainpage .invoicetable {
+  background-color: #f0ebd1;
+  padding: 25px;
+  width: fit-content;
+  border-radius: 20px;
+  position: absolute;
+  left: 0;
+  margin-left: 900px;
+}
+
+.mainpage .invoicetable .table{
+  border: 0px solid #ccc;
+  height: 415px;
+  width: 500px; 
+  border-radius: 20px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  margin-top: 10px
+}
+
+.mainpage .ordertable {
+  background-color: #f0ebd1;
+  padding: 25px;
+  width: fit-content;
+  border-radius: 20px;
+}
+
+.mainpage .ordertable .table {
+  border: 0px solid #ccc;
+  height: 150px;
+  width: 500px; 
+  border-radius: 20px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  margin-top: 10px
+}
+
+.mainpage .picturebox {
+  background-color: #f0ebd1;
+  width: 250px;
+  height: 250px;
+  border: 0px solid ;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.mainpage .picturebox-container {
+  height: 260px;
+  width: 1130px; 
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
 }

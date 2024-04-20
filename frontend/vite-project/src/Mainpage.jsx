@@ -1,34 +1,108 @@
+function orderdata_stub(){
+    return (
+        <tbody>
+            <tr>
+                <td>2017-09-29 01:22</td>
+                <td>200398</td>
+                <td>iPhone X 64Gb Grey</td>
+                <td>$999.00</td>
+                <td>1</td>
+                <td>$999.00</td>
+            </tr>
+        </tbody>
+    )
+}
 function Mainpage(){
     return (
         <div class='mainpage'>
             <text style={{fontSize: 30}}>หน้าหลัก</text>
+            <br/>
+            <br/>
+            <div class="invoicetable">
+                <text style={{fontSize: 30}}>Invoice</text>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Order ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                    </table>
+                </div>
+
+            </div>
             <div class="ordertable">
-            <text style={{fontSize: 30, paddingBottom: "5px"}}>In order</text>
-            <div class="table1">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="column1">Date</th>
-                        <th class="column2">Order ID</th>
-                        <th class="column3">Name</th>
-                        <th class="column4">Price</th>
-                        <th class="column5">Quantity</th>
-                        <th class="column6">Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="column1">2017-09-29 01:22</td>
-                        <td class="column2">200398</td>
-                        <td class="column3">iPhone X 64Gb Grey</td>
-                        <td class="column4">$999.00</td>
-                        <td class="column5">1</td>
-                        <td class="column6">$999.00</td>
-                    </tr>
-                </tbody>
-            </table>
+                <text style={{fontSize: 30}}>In order</text>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Order ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                    </table>
+                </div>
             </div>
+            <br/>
+            <div class="inventorytable">
+                <text style={{fontSize: 30}}>Inventory</text>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Order ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                        {orderdata_stub()}
+                    </table>
+                </div>
+
             </div>
+            <br/>
+            <text style={{fontSize: 30}}>ประเภทสินค้า</text>
+            <br/>
+            <div class="picturebox-container">
+                <div class="picturebox"/>
+                <div class="picturebox"/>
+                <div class="picturebox"/>
+                <div class="picturebox"/>
+                <div class="picturebox"/>
+            </div>
+            <br/>
     </div>
     )
 
