@@ -1,45 +1,65 @@
 body {
   margin: 0;
+  height: 100vh;
+  width: 100vw;
 }
 
 .sidebar {
   background-color: #f0ebd1;
   height: 100vh;
-  width: 250px;
+  width: 18vw;
   float: left;
   position:fixed;
+
 }
 
 .sidebar .catlogo {
-  height: 100px;
+  height: 14vh;
   width: auto;
-  padding-left: 29%;
-  padding-top: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15%;
 }
+
 
 .sidebar .sidebar-button {
   border: 1px #f0ebd1;
+  border-radius: 50px;
   background-color: #f0ebd1;
-  height:50px;
-  width:100%;
+  height:7vh;
+  width: 100%;
   cursor:pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: large;
 }
 
 .sidebar .sidebar-button:hover {
+  background-color: #d8d6c7;
+  cursor:pointer;
+}
+
+.sidebar .sidebar-button:focus-within {
   background-color: #c4bfa3;
+}
+
+.sidebar .sidebar-button:active {
+  background-color: #98926e;
 }
 
 .sidebar .username {
   padding-top: 0;
   margin: 0;
   text-align: center;
+  font-size: 1.3rem;
 }
 
 .mainpage {
   height: 100%;
-  padding-left: 320px;
-  padding-top: 30px;
-  overflow-y: hidden;
+  padding-top: 4vh;
+  margin-left: 22vw;
   position: relative;
 }
 
@@ -100,7 +120,7 @@ body {
   border-radius: 20px;
   position: absolute;
   left: 0;
-  margin-left: 900px;
+  margin-left: 50%;
 }
 
 .mainpage .invoicetable .table{
