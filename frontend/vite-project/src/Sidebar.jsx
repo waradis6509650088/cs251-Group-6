@@ -1,27 +1,24 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import catlogo from './res/catlogo.png'
+import { CurrentPage } from './App';
 
 
 export function Sidebar(){
 
-    const [currentPage,setCurrentPage] = useState("main");
-
-    const changeCurrentPage = (str) => {
-        setCurrentPage(str);
-    }
+    const [currentpage,setCurrentPage] = useContext(CurrentPage);
 
     return(
-        <div class="sidebar" currentPage={currentPage}>
+        <div className="sidebar">
             <img src={catlogo} alt='catlogo' class='catlogo'/>
             <p class="username">username</p>
             <p class="username">usertype</p>
             <br/>
             <br/>
-            <button class="sidebar-button" onClick={() => changeCurrentPage('main')}>หน้าหลัก</button>
-            <button class="sidebar-button" onClick={() => changeCurrentPage('inventory')}>คลังสินค้า</button>
-            <button class="sidebar-button" onClick={() => changeCurrentPage('orderIn')}>รับเข้า</button>
-            <button class="sidebar-button" onClick={() => changeCurrentPage('orderlist')}>คำสั่งซื้อ</button>
-            <button class="sidebar-button" onClick={() => changeCurrentPage('customerlist')}>ลูกค้า/ผู้จัดจำหน่าย</button>
+            <button class="sidebar-button" onClick={() => setCurrentPage('main')}>หน้าหลัก</button>
+            <button class="sidebar-button" onClick={() => setCurrentPage('inventory')}>คลังสินค้า</button>
+            <button class="sidebar-button" onClick={() => setCurrentPage('orderIn')}>รับเข้า</button>
+            <button class="sidebar-button" onClick={() => setCurrentPage('orderlist')}>คำสั่งซื้อ</button>
+            <button class="sidebar-button" onClick={() => setCurrentPage('customerlist')}>ลูกค้า/ผู้จัดจำหน่าย</button>
         </div>
     );
 

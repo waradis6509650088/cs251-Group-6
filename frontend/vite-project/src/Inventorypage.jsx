@@ -1,5 +1,7 @@
 export function Inventorypage(){
     return (
-        <text>hi</text>
+        <div class="inventorypage">
+            hello
+        </div>
     )
 }

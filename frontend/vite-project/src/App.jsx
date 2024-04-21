@@ -1,28 +1,18 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
+import {AppPageHandler} from './AppPageHandler.jsx';
 import {Sidebar} from './Sidebar.jsx'
-import {Mainpage} from './Mainpage.jsx'
-import {Inventorypage} from './Inventorypage.jsx'
+
+export const CurrentPage = React.createContext();
 
 export function App() {
 
-  let defaultPage = <Mainpage/>;
-
-  function changeToPage({currentPage}) {
-    switch(currentPage){
-      case 'inventory':
-        return <Inventorypage/>
-      default:
-        return defaultPage;
-    }
-  } 
-  
-  const [displayedPage,setDisplayedPage] = useState(changeToPage());
+  const [currentpage,setCurrentPage] = useState("main");
 
   return (
-    <body>
+    <CurrentPage.Provider value={[currentpage,setCurrentPage]}>
       <Sidebar/>
-      {displayedPage}
-    </body>
+      <AppPageHandler/>
+    </CurrentPage.Provider>
   );
 
 }
