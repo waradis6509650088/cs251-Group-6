@@ -12,7 +12,7 @@ function orderdata_stub(){
         </tbody>
     )
 }
-function Mainpage(){
+export function Mainpage(){
     return (
         <div class='mainpage'>
             <text style={{fontSize: 30}}>หน้าหลัก</text>
@@ -107,5 +107,3 @@ function Mainpage(){
     )
 
 }
-
-export default Mainpage
