@@ -12,12 +12,12 @@ CREATE TABLE Manager (
     Shelf varchar(3)
 );
 
--- DROP TABLE IF EXISTS Manager_Contact;
+DROP TABLE IF EXISTS Manager_Contact;
 
--- CREATE TABLE Manager_Contact (
---     ManagerID int,
---     Mcontact varchar(10)
--- );
+CREATE TABLE Manager_Contact (
+    ManagerID int,
+    Mcontact varchar(10)
+);
 
 -- DROP TABLE IF EXISTS Inventory;
 
