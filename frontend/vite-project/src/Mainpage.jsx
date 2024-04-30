@@ -1,17 +1,40 @@
-function orderdata_stub(){
-    return (
-        <tbody>
-            <tr>
-                <td>2017-09-29 01:22</td>
-                <td>200398</td>
-                <td>iPhone X 64Gb Grey</td>
-                <td>$999.00</td>
-                <td>1</td>
-                <td>$999.00</td>
-            </tr>
-        </tbody>
-    )
+const BACKENDIP = '127.0.0.1:1144';
+function getorderdata(){
+    fetch('127.0.0.1:1144/api/getordertable')
+    .then(response => {
+        response.json();
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        return (
+            <body>
+                <tr>
+                    <td>
+                        null
+                    </td>
+                </tr>
+            </body>
+        )
+    })
 }
+
+function generateTable(data) {
+    var html = '';
+    data.forEach(function (item) {
+        html += '</body>';
+        html += '<tr>';
+        for (var key in item) {
+            html += '<td>' + item[key] + '</td>';
+        }
+        html += '</tr>';
+        html += '</body>';
+    });
+    
+    return html;
+}
+
 export function Mainpage(){
     return (
         <div class='mainpage'>
@@ -24,26 +47,13 @@ export function Mainpage(){
                     <table>
                         <thead>
                             <tr>
-                                <th>Date</th>
                                 <th>Order ID</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
+                                <th>Count</th>
+                                <th>Manager ID</th>
+                                <th>Retailer ID</th>
                             </tr>
                         </thead>
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
+                        {getorderdata()}
                     </table>
                 </div>
 
@@ -54,18 +64,13 @@ export function Mainpage(){
                     <table>
                         <thead>
                             <tr>
-                                <th>Date</th>
                                 <th>Order ID</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
+                                <th>Count</th>
+                                <th>Manager ID</th>
+                                <th>Retailer ID</th>
                             </tr>
                         </thead>
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
+                        {getorderdata()}
                     </table>
                 </div>
             </div>
@@ -84,10 +89,6 @@ export function Mainpage(){
                                 <th>Total</th>
                             </tr>
                         </thead>
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
-                        {orderdata_stub()}
                     </table>
                 </div>
 
