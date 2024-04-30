@@ -1,38 +1,55 @@
-const BACKENDIP = '127.0.0.1:1144';
+import React from 'react';
+const BACKENDIP = 'http://localhost:1144';
+
 function getorderdata(){
-    fetch('127.0.0.1:1144/api/getordertable')
-    .then(response => {
-        response.json();
-    })
-    .then(data => {
+    let output;
+    fetch(BACKENDIP + '/api/getordertable')
+    .then(response => response.json())
+    .then((data) => {
+        // console.log(data.data);
         console.log(data);
+        // console.log(generateTable(data.data));
+        // let output = generateTable(data.data);
+        // return output
+        // let output = generateTable(data)
+        output = (
+            <tbody>
+                <tr>
+                    <td>no info</td>
+                    <td>no info</td>
+                    <td>no info</td>
+                    <td>no info</td>
+                </tr>
+            </tbody>
+        )
     })
     .catch(error => {
         return (
-            <body>
+            <tbody>
                 <tr>
-                    <td>
-                        null
-                    </td>
+                    <td>no info</td>
+                    <td>no info</td>
+                    <td>no info</td>
+                    <td>no info</td>
                 </tr>
-            </body>
+            </tbody>
         )
     })
+    return output;
 }
 
 function generateTable(data) {
-    var html = '';
-    data.forEach(function (item) {
-        html += '</body>';
-        html += '<tr>';
-        for (var key in item) {
-            html += '<td>' + item[key] + '</td>';
-        }
-        html += '</tr>';
-        html += '</body>';
-    });
-    
-    return html;
+    return (
+        <tbody>
+            {data.map((item, index) => (
+                <tr key={index}>
+                    {Object.values(item).map((value, index) => (
+                        <td key={index}>{value}</td>
+                    ))}
+                </tr>
+            ))}
+        </tbody>
+    );
 }
 
 export function Mainpage(){
@@ -53,7 +70,6 @@ export function Mainpage(){
                                 <th>Retailer ID</th>
                             </tr>
                         </thead>
-                        {getorderdata()}
                     </table>
                 </div>
 

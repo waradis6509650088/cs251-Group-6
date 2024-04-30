@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors")
 const app = express();
 const APPPORT = 1144;
 
@@ -9,6 +10,7 @@ const DBNAME = 'meo_warehouse';
 
 //connection
 app.use(express.json());
+app.use(cors());
 
 const mysql = require("mysql2");
 const db = mysql.createConnection({
@@ -41,10 +43,10 @@ app.get('/api/getordertable', (req,res) => {
 
 //starting app
 db.connect(function(err){
-if(err) {
-    throw err;
-} else {
-    console.log("Database is connected");
-    app.listen(APPPORT, () => console.log("server started."));
-}
+    if(err) {
+        throw err;
+    } else {
+        console.log("Database is connected");
+        app.listen(APPPORT, () => console.log("server started."));
+    }
 });
