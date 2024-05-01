@@ -7,5 +7,3 @@ ENV MYSQL_PASSWORD=nimda
 ENV MYSQL_DATABASE=meo_warehouse
 
 COPY sql_init.sql /docker-entrypoint-initdb.d
-
-EXPOSE 3306

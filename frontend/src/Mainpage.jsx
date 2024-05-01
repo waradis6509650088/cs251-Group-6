@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from "react"
-const BACKENDIP = 'http://localhost:1144';
+const BACKENDIP = 'http://10.9.0.6:1144';
 
 
 export function Mainpage(){

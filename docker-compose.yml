@@ -2,19 +2,36 @@ version: "1"
 services:
   db:
     build: ./database
-    ports: 
-      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: toor
     volumes:
       - "./db_data:/var/lib/mysql:rw"
+    ports:
+      - "3306:3306"
+    networks:
+        net-10.9.0.0:
+            ipv4_address: 10.9.0.5
+
 
   backend:
     build: ./backend
     ports:
       - "1144:1144"
+    networks:
+        net-10.9.0.0:
+            ipv4_address: 10.9.0.6
 
   web:
     build: ./frontend
     ports:
       - "5173:5173"
+    networks:
+          net-10.9.0.0:
+              ipv4_address: 10.9.0.7
+              
+networks:
+  net-10.9.0.0:
+    name: net-10.9.0.0
+    ipam:
+        config:
+            - subnet: 10.9.0.0/24
