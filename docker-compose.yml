@@ -5,7 +5,7 @@ services:
     environment:
       MARIADB_ROOT_PASSWORD: toor
     volumes:
-      - "./db_data:/var/lib/mysql:rw"
+      - "./database/db_data:/var/lib/mysql:rw"
     networks:
         main-net:
             ipv4_address: 10.9.0.5
@@ -16,7 +16,6 @@ services:
       interval: 5s
       retries: 5
 
-
   backend:
     build: ./backend
     networks:
@@ -25,6 +24,8 @@ services:
     depends_on: 
       db:
         condition: service_healthy
+    ports: 
+      - "1144:1144"
 
   web:
     build: ./frontend
@@ -33,7 +34,7 @@ services:
     networks:
           main-net:
               ipv4_address: 10.9.0.7
-              
+
 networks:
   main-net:
     name: main-net

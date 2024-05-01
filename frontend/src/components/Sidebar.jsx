@@ -10,8 +10,8 @@ export function Sidebar(){
     return(
         <div className="sidebar">
             <img src={catlogo} alt='catlogo' class='catlogo'/>
-            <p class="username">username</p>
-            <p class="username">usertype</p>
+            <p class="username">admin</p>
+            <p class="username">owner</p>
             <br/>
             <br/>
             <button class="sidebar-button" onClick={() => setCurrentPage('main')}>หน้าหลัก</button>

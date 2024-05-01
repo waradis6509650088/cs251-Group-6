@@ -5,12 +5,14 @@ const app = express();
 const APPPORT = 1144;
 
 const DBPORT = 3306;
+const DBIP_PROD = "10.9.0.5";
+const DBIP_DEV = "127.0.0.1"
 const DBUSER = 'root';
 const DBPASS = 'toor'
 const DBNAME = 'meo_warehouse';
 
 const DB_CONFIG = {
-    host     : '10.9.0.5',
+    host     : DBIP_DEV, //change to DBIP_PROD when in production
     port     : DBPORT,
     user     : DBUSER,
     password : DBPASS,
@@ -39,6 +41,27 @@ function getQuery(querystring){
 
 app.get('/api/getordertable', (req,res) => {
     let sql = "select * from Ordertable;"
+    getQuery(sql).then((result) => {
+        res.status(200).send({data: result});
+    });
+});
+
+app.get('/api/getinventorytable', (req,res) => {
+    let sql = "select * from Inventory;"
+    getQuery(sql).then((result) => {
+        res.status(200).send({data: result});
+    });
+});
+
+app.get('/api/getinvoicetable', (req,res) => {
+    let sql = "select SupplierID, List, date_format(sendDate, '%y/%m/%d'), sendCount from Supplier;"
+    getQuery(sql).then((result) => {
+        res.status(200).send({data: result});
+    });
+});
+
+app.get('/api/getproducttable', (req,res) => {
+    let sql = "select PID, Pname, Shelf from Product;"
     getQuery(sql).then((result) => {
         res.status(200).send({data: result});
     });
