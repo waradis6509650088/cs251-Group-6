@@ -139,7 +139,7 @@ body {
 
 .mainpage .inventory .table{
   border: 0px solid #ccc;
-  height: 415px;
+  height: 423px;
   width: 500px; 
   border-radius: 20px;
   overflow: scroll;
@@ -331,7 +331,7 @@ body {
 
 .inventorypage .addproductinput {
   width: 11.5vw;
-  height: 6vh;
+  height: 5vh;
   border-radius: 15px;
   padding-left: 1vw;
   margin-left: 0.5rem;
