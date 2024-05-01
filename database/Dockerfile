@@ -1,4 +1,4 @@
-FROM mysql:8
+FROM mariadb:latest
 ARG DEBIAN_FRONTEND=noninteractive
 
 ENV MYSQL_ROOT_PASSWORD=toor
