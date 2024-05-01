@@ -51,7 +51,7 @@ export function Mainpage(){
             <br/>
             <br/>
             <div class="inventory">
-                <text style={{fontSize: 30}}>Invoice</text>
+                <text style={{fontSize: 30}}>Inventory</text>
                 <div class="table">
                     <table>
                         <thead>
