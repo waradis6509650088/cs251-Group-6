@@ -3,35 +3,40 @@ services:
   db:
     build: ./database
     environment:
-      MYSQL_ROOT_PASSWORD: toor
+      MARIADB_ROOT_PASSWORD: toor
     volumes:
       - "./db_data:/var/lib/mysql:rw"
-    ports:
-      - "3306:3306"
     networks:
-        net-10.9.0.0:
+        main-net:
             ipv4_address: 10.9.0.5
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect"]
+      start_period: 10s
+      timeout: 3s
+      interval: 5s
+      retries: 5
 
 
   backend:
     build: ./backend
-    ports:
-      - "1144:1144"
     networks:
-        net-10.9.0.0:
+        main-net:
             ipv4_address: 10.9.0.6
+    depends_on: 
+      db:
+        condition: service_healthy
 
   web:
     build: ./frontend
     ports:
       - "5173:5173"
     networks:
-          net-10.9.0.0:
+          main-net:
               ipv4_address: 10.9.0.7
               
 networks:
-  net-10.9.0.0:
-    name: net-10.9.0.0
+  main-net:
+    name: main-net
     ipam:
         config:
             - subnet: 10.9.0.0/24

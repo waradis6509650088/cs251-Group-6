@@ -1,4 +1,5 @@
 const express = require("express");
+const mysql = require("mysql2");
 const cors = require("cors")
 const app = express();
 const APPPORT = 1144;
@@ -8,18 +9,19 @@ const DBUSER = 'root';
 const DBPASS = 'toor'
 const DBNAME = 'meo_warehouse';
 
-//connection
-app.use(express.json());
-app.use(cors());
-
-const mysql = require("mysql2");
-const db = mysql.createConnection({
+const DB_CONFIG = {
     host     : '10.9.0.5',
     port     : DBPORT,
     user     : DBUSER,
     password : DBPASS,
     database : DBNAME
-});
+}
+
+//connection
+app.use(express.json());
+app.use(cors());
+
+const db = mysql.createConnection(DB_CONFIG);
 
 //apis
 //this function use for starting a query on the database
@@ -34,6 +36,7 @@ function getQuery(querystring){
         })
     })
 }
+
 app.get('/api/getordertable', (req,res) => {
     let sql = "select * from Ordertable;"
     getQuery(sql).then((result) => {
@@ -44,7 +47,7 @@ app.get('/api/getordertable', (req,res) => {
 //starting app
 db.connect(function(err){
     if(err) {
-        throw err;
+        return 1;
     } else {
         console.log("Database is connected");
         app.listen(APPPORT, () => console.log("server started."));
