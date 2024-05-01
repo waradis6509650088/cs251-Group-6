@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {AppPageHandler} from './components/AppPageHandler.jsx';
-import {Sidebar} from './Sidebar.jsx'
+import {Sidebar} from './components/Sidebar.jsx'
 
 export const CurrentPage = React.createContext();
 
