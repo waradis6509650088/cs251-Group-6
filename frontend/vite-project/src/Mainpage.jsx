@@ -1,73 +1,65 @@
 import React from 'react';
+import { useEffect, useState } from "react"
 const BACKENDIP = 'http://localhost:1144';
 
-function getorderdata(){
-    let output;
-    fetch(BACKENDIP + '/api/getordertable')
-    .then(response => response.json())
-    .then((data) => {
-        // console.log(data.data);
-        console.log(data);
-        // console.log(generateTable(data.data));
-        // let output = generateTable(data.data);
-        // return output
-        // let output = generateTable(data)
-        output = (
-            <tbody>
-                <tr>
-                    <td>no info</td>
-                    <td>no info</td>
-                    <td>no info</td>
-                    <td>no info</td>
-                </tr>
-            </tbody>
-        )
-    })
-    .catch(error => {
-        return (
-            <tbody>
-                <tr>
-                    <td>no info</td>
-                    <td>no info</td>
-                    <td>no info</td>
-                    <td>no info</td>
-                </tr>
-            </tbody>
-        )
-    })
-    return output;
-}
-
-function generateTable(data) {
-    return (
-        <tbody>
-            {data.map((item, index) => (
-                <tr key={index}>
-                    {Object.values(item).map((value, index) => (
-                        <td key={index}>{value}</td>
-                    ))}
-                </tr>
-            ))}
-        </tbody>
-    );
-}
 
 export function Mainpage(){
+
+    const [ordertable, setOrdertable] = useState([])
+
+    function getorderdata(){
+        let output;
+        useEffect(() => {
+            fetch(BACKENDIP + '/api/getordertable')
+            .then(response => response.json())
+            .then((data) => {
+                setOrdertable(generateTable(data.data));
+            })
+            .catch(error => {
+                return (
+                    <tbody>
+                        <tr>
+                            <td>no info</td>
+                            <td>no info</td>
+                            <td>no info</td>
+                            <td>no info</td>
+                        </tr>
+                    </tbody>
+                )
+            })
+        }, [])
+        return ordertable;
+    }
+
+    function generateTable(data) {
+        return (
+            <tbody>
+                {data.map((item, index) => (
+                    <tr key={index}>
+                        {Object.values(item).map((value, index) => (
+                            <td key={index}>{value}</td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
+        );
+    }
+
     return (
         <div class='mainpage'>
             <text style={{fontSize: 30}}>หน้าหลัก</text>
             <br/>
             <br/>
-            <div class="invoicetable">
+            <div class="inventory">
                 <text style={{fontSize: 30}}>Invoice</text>
                 <div class="table">
                     <table>
                         <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th>Count</th>
-                                <th>Manager ID</th>
-                                <th>Retailer ID</th>
+                                <th>Location</th>
+                                <th>Product No.</th>
+                                <th>In stock</th>
+                                <th>Max stock</th>
                             </tr>
                         </thead>
                     </table>
@@ -75,7 +67,7 @@ export function Mainpage(){
 
             </div>
             <div class="ordertable">
-                <text style={{fontSize: 30}}>In order</text>
+                <text style={{fontSize: 30}}>Incoming order</text>
                 <div class="table">
                     <table>
                         <thead>
