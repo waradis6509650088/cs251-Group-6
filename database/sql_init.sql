@@ -69,7 +69,8 @@ CREATE TABLE Ordertable (
     OrderID varchar(6),
     Count int,
     ManagerID varchar(6),
-    Rid varchar(6)
+    Rid varchar(6),
+    orderStatus varchar(10)
 );
 
 DROP TABLE IF EXISTS OrderList;

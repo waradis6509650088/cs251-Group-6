@@ -45,13 +45,29 @@ export function Inventorypage(){
         + "'and Shelf='" 
         + shelf 
         + "'";
+        let sql2 = "delete from Inventory where NumberOfProduct='" 
+        + pid 
+        + "'and Shelf='" 
+        + shelf 
+        + "'";
+
         let jsonbody = {
             sql: sql
+        }
+        let jsonbody2 = {
+            sql:sql2
         }
         console.log(jsonbody);
         fetch(url, {
             method: "POST",
             body: JSON.stringify(jsonbody),
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        })
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify(jsonbody2),
             headers: {
                 "Content-Type" : "application/json"
             }
@@ -97,6 +113,7 @@ export function Inventorypage(){
     const productid = useRef();
     const productname = useRef();
     const orderid = useRef();
+    const orderamount = useRef();
 
     function addProductToDB(){
         let dataToSend = {
@@ -104,6 +121,7 @@ export function Inventorypage(){
             ID:',"' + productid.current.value + '"',
             name:',"' + productname.current.value + '"',
             OID:',"' + orderid.current.value + '"',
+            amount: ',"'+ orderamount.current.value + '"'
         }
         console.log(dataToSend.shelf);
         setAddButton(!addButton);
@@ -111,12 +129,25 @@ export function Inventorypage(){
         let url = BACKENDIP + '/api/addproducttable';
         let sql = 'insert into Product values '
         + '(' + dataToSend.shelf + dataToSend.ID + dataToSend.name + dataToSend.OID + ');'
+        let sql2 = 'insert into Inventory values '
+        + '(' + dataToSend.shelf + dataToSend.ID 
+        + dataToSend.amount + dataToSend.amount + ');'
         let jsonbody = {
             sql:sql
+        }
+        let jsonbody2 = {
+            sql:sql2
         }
         fetch(url, {
             method: "POST",
             body: JSON.stringify(jsonbody),
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        })
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify(jsonbody2),
             headers: {
                 "Content-Type" : "application/json"
             }
@@ -133,6 +164,7 @@ export function Inventorypage(){
                     <input class="addproductinput" ref={productid} placeholder="ID" />
                     <input class="addproductinput" ref={productname} placeholder="name" />
                     <input class="addproductinput" ref={orderid} placeholder="order" />
+                    <input class="addproductinput" ref={orderamount} placeholder="amount" />
                 </>
             );
 

@@ -367,7 +367,7 @@ body {
 }
 
 .inventorypage .addproductinput {
-  width: 11.5vw;
+  width: 7vw;
   height: 5vh;
   border-radius: 15px;
   padding-left: 1vw;
@@ -383,6 +383,7 @@ body {
   height: 100%;
   padding-top: 4vh;
   margin-left: 22vw;
+  width: 74vw;
   position: relative;
 }
 
@@ -397,7 +398,7 @@ body {
 .orderinpage .table {
   border: 0px solid #ccc;
   height: 85.7vh;
-  width: 75vw; 
+  width: 100%;
   border-radius: 20px;
   overflow: scroll;
   overflow-x: hidden;
@@ -430,8 +431,28 @@ body {
   padding-top: 5px;
 }
 
+.orderinpage .valid-button {
+  min-width: 8rem;
+  min-height: 3rem;
+  margin-left: 1rem;
+  border: 0px;
+  border-radius: 15px;
+  background-color: green;
+}
+
+.orderinpage .invalid-button {
+  min-width: 8rem;
+  min-height: 3rem;
+  margin-left: 1rem;
+  margin-right: -11rem;
+  border: 0px;
+  border-radius: 15px;
+  background-color: rgb(183, 3, 3);
+}
+
 .orderlistpage {
   height: 100%;
+  width: 73vw;
   padding-top: 4vh;
   margin-left: 22vw;
   position: relative;
@@ -448,7 +469,7 @@ body {
 .orderlistpage .table {
   border: 0px solid #ccc;
   height: 85.7vh;
-  width: 75vw; 
+  width: 100%; 
   border-radius: 20px;
   overflow: scroll;
   overflow-x: hidden;

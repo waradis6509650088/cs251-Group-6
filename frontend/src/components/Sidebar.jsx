@@ -22,7 +22,7 @@ export function Sidebar(){
             <button class="sidebar-button" onClick={() => setCurrentPage('orderlist')}>คำสั่งซื้อ</button>
             <button class="sidebar-button" onClick={() => setCurrentPage('customerlist')}>ลูกค้า/ผู้จัดจำหน่าย</button>
             <button class="logout-button" onClick={() => setIsLogin(!isLogin)}>
-                <text class="logout-text">ออกจากระบบ</text>
+                <text class="logout-text"></text>
                 <img class="logout-image" src="https://cdn-icons-png.flaticon.com/512/182/182448.png"/>
             </button>
         </div>

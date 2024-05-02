@@ -6,10 +6,10 @@ export function OrderInPage(){
                 <table>
                     <thead>
                         <tr>
-                            <th>Preview</th>
-                            <th>Product ID</th>
-                            <th>Product name</th>
-                            <th>Shelf</th>
+                            <th>Retailer ID</th>
+                            <th>Order ID</th>
+                            <th>Count</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
