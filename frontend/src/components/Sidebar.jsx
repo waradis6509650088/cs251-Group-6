@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import catlogo from './res/catlogo.png'
-import { CurrentPage } from '../App';
+import { CurrentPage } from '../LoginPageHandler';
 
 
 export function Sidebar(){

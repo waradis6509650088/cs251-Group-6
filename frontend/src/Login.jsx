@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import profileImage from './image6.png';
+import { IsLogin } from './LoginPageHandler';
 
-export default function Login() {
+export function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const [isLogin,setIsLogin] = useContext(IsLogin);//placeholder for login
 
   const containerStyle = {
     background: 'linear-gradient(180deg, #F9F1C9 12.67%, #FFE2A9 44.67%)',
@@ -79,25 +82,25 @@ export default function Login() {
   };
 
   return (
-    <div style={containerStyle}>
-      <div style={boxStyle}>
-        <div style={circleStyle}></div>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={handleUsernameChange}
-          style={inputStyle}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePasswordChange}
-          style={inputStyle}
-        />
-        <button style={buttonStyle}>Login</button>
+      <div style={containerStyle}>
+        <div style={boxStyle}>
+          <div style={circleStyle}></div>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={handleUsernameChange}
+            style={inputStyle}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={handlePasswordChange}
+            style={inputStyle}
+          />
+          <button style={buttonStyle} onClick={() => {setIsLogin(!isLogin)}}>Login</button>
+        </div>
       </div>
-    </div>
   );
 }
