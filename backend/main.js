@@ -8,7 +8,7 @@ const DBPORT = 3306;
 const DBIP_PROD = "10.9.0.5";
 const DBIP_DEV = "127.0.0.1"
 const DBUSER = 'root';
-const DBPASS = 'toor'
+const DBPASS = 'MTIzNDU2Nzg5MA=='; //original = toor
 const DBNAME = 'meo_warehouse';
 
 const DB_CONFIG = {
