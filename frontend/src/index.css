@@ -6,6 +6,7 @@ body {
   width: 100vw;
   font-family: "noto sans thai", sans-serif;
   font-size: normal;
+  overflow-x: hidden;
 }
 
 .sidebar {
@@ -38,6 +39,38 @@ body {
   margin-right: auto;
   font-size: 1.2rem;
   font-family: "noto sans thai", sans-serif;
+}
+
+.sidebar .logout-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0px;
+  border-radius: 20px;
+  margin-top: 12vh;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.sidebar .logout-button:hover {
+  background-color: #d4cea1;
+}
+
+.sidebar .logout-button:active {
+  background-color: rgb(207, 207, 207);
+}
+
+.sidebar .logout-button .logout-image {
+  height: 5vh;
+  width: auto;
+  padding: 0.5rem;
+}
+
+.sidebar .logout-button .logout-text {
+  float: left;
+  padding-top: 1.1rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
 }
 
 .sidebar .sidebar-button:hover {
@@ -258,24 +291,6 @@ body {
   padding-top: 5px;
 }
 
-.inventorypage .inventorytable {
-  background-color: #f0ebd1;
-  padding: 25px;
-  width: fit-content;
-  border-radius: 20px;
-}
-
-.inventorypage .inventorytable .table{
-  border: 0px solid #ccc;
-  height: 150px;
-  width: 500px; 
-  border-radius: 20px;
-  overflow: scroll;
-  overflow-x: hidden;
-  background-color: white;
-  margin-top: 10px
-}
-
 .inventorypage .table .foodpic{
   max-width: 20%;
   float: left;
@@ -285,12 +300,34 @@ body {
   column-width: 10%;
 }
 
+.inventorypage .deletebutton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 4rem;
+  border: 0px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.inventorypage .deletebutton:hover {
+  background-color: #bfbfbf;
+}
+
+.inventorypage .deletebutton-image {
+  height: 3rem;
+}
+
 .inventorypage .search {
   width: 30vw;
   height: 5vh;
   border-radius: 20px;
   padding-left: 1vw;
   font-size: 1.2rem;
+}
+
+.inventorypage .searchbar {
+  height: 2.7rem;
 }
 
 .inventorypage .additembutton {
@@ -349,11 +386,48 @@ body {
   position: relative;
 }
 
-.customerlistpage {
-  height: 100%;
-  padding-top: 4vh;
-  margin-left: 22vw;
-  position: relative;
+.orderinpage table {
+  border-spacing: 0px;
+  width: 100%;
+  height: 7%;
+  border-bottom: 3px solid #ccc;
+  border-top-left-radius: 20px;
+}
+
+.orderinpage .table {
+  border: 0px solid #ccc;
+  height: 85.7vh;
+  width: 75vw; 
+  border-radius: 20px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: rgb(227, 227, 227);
+  margin-top: 10px
+}
+
+.orderinpage thead th {
+  position: sticky; 
+  top: 0; 
+  background: whitesmoke;
+  font-size:1.1rem;
+  font-weight: 200; 
+  padding:10px;
+  text-align:left;
+  vertical-align: center;
+}
+
+.orderinpage td{
+  background:#e7e7e7;
+  padding:8px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:16px;
+  border-bottom: 3px solid #c1c1c1;
+}
+
+.orderinpage tbody {
+  padding-top: 5px;
 }
 
 .orderlistpage {
@@ -361,4 +435,103 @@ body {
   padding-top: 4vh;
   margin-left: 22vw;
   position: relative;
+}
+
+.orderlistpage table {
+  border-spacing: 0px;
+  width: 100%;
+  height: 7%;
+  border-bottom: 3px solid #ccc;
+  border-top-left-radius: 20px;
+}
+
+.orderlistpage .table {
+  border: 0px solid #ccc;
+  height: 85.7vh;
+  width: 75vw; 
+  border-radius: 20px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: rgb(227, 227, 227);
+  margin-top: 10px
+}
+
+.orderlistpage thead th {
+  position: sticky; 
+  top: 0; 
+  background: whitesmoke;
+  font-size:1.1rem;
+  font-weight: 200; 
+  padding:10px;
+  text-align:left;
+  vertical-align: center;
+}
+
+.orderlistpage td{
+  background:#e7e7e7;
+  padding:8px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:16px;
+  border-bottom: 3px solid #c1c1c1;
+}
+
+.orderlistpage tbody {
+  padding-top: 5px;
+}
+
+.customerlistpage {
+  height: 100%;
+  padding-top: 4vh;
+  margin-left: 22vw;
+  position: relative;
+}
+
+.customerlistpage table {
+  border-spacing: 0px;
+  width: 100%;
+  height: 7%;
+  border-bottom: 3px solid #ccc;
+  border-top-left-radius: 20px;
+}
+
+.customerlistpage .table {
+  border: 0px solid #ccc;
+  height: 80vh;
+  width: 75vw; 
+  border-radius: 20px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: rgb(227, 227, 227);
+  margin-top: 10px
+}
+
+.customerlistpage thead th {
+  position: sticky; 
+  top: 0; 
+  background: whitesmoke;
+  font-size:1.1rem;
+  font-weight: 200; 
+  padding:10px;
+  text-align:left;
+  vertical-align: center;
+}
+
+.customerlistpage td{
+  background:#e7e7e7;
+  padding:8px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:16px;
+  border-bottom: 3px solid #c1c1c1;
+}
+
+.customerlistpage tbody {
+  padding-top: 5px;
+}
+
+.customerlistpage .top-table {
+  height: 2.7rem;
 }

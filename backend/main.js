@@ -8,7 +8,7 @@ const DBPORT = 3306;
 const DBIP_PROD = "10.9.0.5";
 const DBIP_DEV = "127.0.0.1"
 const DBUSER = 'root';
-const DBPASS = 'MTIzNDU2Nzg5MA=='; //original = toor
+const DBPASS = 'toor'; //original = toor
 const DBNAME = 'meo_warehouse';
 
 const DB_CONFIG = {
@@ -65,6 +65,20 @@ app.get('/api/getproducttable', (req,res) => {
     getQuery(sql).then((result) => {
         res.status(200).send({data: result});
     });
+});
+
+app.post('/api/addproducttable',(req, res) => {
+    console.log(req.body.sql);
+    getQuery(req.body.sql).then((result) => {
+        res.status(200).send("send.");
+    })
+});
+
+app.post('/api/deleteproducttable',(req, res) => {
+    console.log(req.body.sql);
+    getQuery(req.body.sql).then((result) => {
+        res.status(200).send("send.");
+    })
 });
 
 //starting app

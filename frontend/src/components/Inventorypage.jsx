@@ -3,7 +3,7 @@ import React from "react";
 const BACKENDIP = 'http://localhost:1144';
 
 //pain
-import food1 from "./res/food_pic/ababa food.png"
+import food1 from "./res/food_pic/food1.png"
 import food2 from "./res/food_pic/delicious food.png"
 import food3 from "./res/food_pic/meeeoo food.png"
 import missing from "./res/food_pic/missing.png"
@@ -36,9 +36,31 @@ export function Inventorypage(){
         return productdata;
     }
 
+    function deleteEntry(name, pid, shelf){
+        let url = BACKENDIP + "/api/deleteproducttable";
+        let sql = "delete from Product where PID='" 
+        + pid 
+        + "'and Pname='" 
+        + name 
+        + "'and Shelf='" 
+        + shelf 
+        + "'";
+        let jsonbody = {
+            sql: sql
+        }
+        console.log(jsonbody);
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify(jsonbody),
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        })
+    }
+
     function generateTableWithPicture(data) {
          let picMap = {
-            'ababa food' : food1,
+            'food1' : food1,
             'meeeoo food' : food3,
             'delicious food' : food2,
         }       
@@ -51,6 +73,11 @@ export function Inventorypage(){
                         <td>{item.PID}</td>
                         <td>{item.Pname}</td>
                         <td>{item.Shelf}</td>
+                        <td>
+                            <button class="deletebutton" onClick={() => deleteEntry(item.Pname,item.PID,item.Shelf)}>
+                                <img class="deletebutton-image" src="https://cdn-icons-png.flaticon.com/512/484/484662.png"/>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             );
@@ -73,14 +100,27 @@ export function Inventorypage(){
 
     function addProductToDB(){
         let dataToSend = {
-            shelf:shelfid.current.value,
-            ID:productid.current.value,
-            name:productname.current.value,
-            OID:orderid.current.value,
+            shelf:'"' + shelfid.current.value + '"',
+            ID:',"' + productid.current.value + '"',
+            name:',"' + productname.current.value + '"',
+            OID:',"' + orderid.current.value + '"',
         }
         console.log(dataToSend.shelf);
         setAddButton(!addButton);
         searchButton();
+        let url = BACKENDIP + '/api/addproducttable';
+        let sql = 'insert into Product values '
+        + '(' + dataToSend.shelf + dataToSend.ID + dataToSend.name + dataToSend.OID + ');'
+        let jsonbody = {
+            sql:sql
+        }
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify(jsonbody),
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        })
     }
 
     function searchButton(){
@@ -114,18 +154,19 @@ export function Inventorypage(){
                 {searchButton()}
             </div>
             <div class="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="piccolumn">Preview</th>
-                                <th>Product ID</th>
-                                <th>Product name</th>
-                                <th>Shelf</th>
-                            </tr>
-                        </thead>
-                        {getProductdata()}
-                    </table>
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="piccolumn">Preview</th>
+                            <th>Product ID</th>
+                            <th>Product name</th>
+                            <th>Shelf</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    {getProductdata()}
+                </table>
+            </div>
         </div>
     )
 }
