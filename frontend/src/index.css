@@ -419,7 +419,7 @@ body {
 
 .orderinpage td{
   background:#e7e7e7;
-  padding:8px;
+  padding-left: 18px;
   text-align:left;
   vertical-align:middle;
   font-weight:300;
@@ -434,20 +434,37 @@ body {
 .orderinpage .valid-button {
   min-width: 8rem;
   min-height: 3rem;
-  margin-left: 1rem;
+  margin-left: 0rem;
   border: 0px;
   border-radius: 15px;
   background-color: green;
+  font-size: 1.2rem;
 }
 
+.orderinpage .valid-button:hover {
+  background-color: rgba(0, 90, 0, 0.999);
+}
+
+.orderinpage .valid-button:active {
+  background-color: rgba(0, 45, 0, 0.999);
+}
 .orderinpage .invalid-button {
   min-width: 8rem;
   min-height: 3rem;
   margin-left: 1rem;
-  margin-right: -11rem;
+  margin-right: -8rem;
   border: 0px;
   border-radius: 15px;
   background-color: rgb(183, 3, 3);
+  font-size: 1.2rem;
+}
+
+.orderinpage .invalid-button:hover {
+  background-color: rgba(115, 0, 0, 0.999);
+}
+
+.orderinpage .invalid-button:hover {
+  background-color: rgba(61, 0, 0, 0.999);
 }
 
 .orderlistpage {

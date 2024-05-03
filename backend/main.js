@@ -40,7 +40,38 @@ function getQuery(querystring){
 }
 
 app.get('/api/getordertable', (req,res) => {
-    let sql = "select * from Ordertable;"
+    let sql = "select Ordertable.OrderID, Product.Pname, Count, orderStatus from Ordertable, Product where Product.OrderID=Ordertable.OrderID;"
+    getQuery(sql).then((result) => {
+        res.status(200).send({data: result});
+    });
+});
+
+app.post('/api/createorder', (req, res) => {
+    let sql = "insert into Ordertable (OrderID, Count, ManagerID, RID) values " + req.body.order;
+    let listsql = "insert into OrderList OrderID, List values " + req.body.orderlist;
+    getQuery(listsql).then();
+    getQuery(sql).then((result) => {
+        res.status(200).send("send.");
+    });
+})
+
+app.post('/api/updateorderstatus', (req, res) => {
+    if(req.body.status == "PROCESSING"){
+        let sql = "UPDATE Ordertable SET OrderStatus='PROCESSING' where OrderID=" + req.body.id + ";"
+        getQuery(sql).then((result) => {
+            res.status(200).send("processed")
+        });
+    }
+    else{
+        let sql = "UPDATE Ordertable SET OrderStatus='REJECTED' where OrderID=" + req.body.id + ";"
+        getQuery(sql).then((result) => {
+            res.status(200).send("process fail")
+        });
+    }
+})
+
+app.get('/api/getincomingordertable', (req,res) => {
+    let sql = "select RID, OrderID, ManagerID, Count from Ordertable where orderStatus='WAITING';"
     getQuery(sql).then((result) => {
         res.status(200).send({data: result});
     });
@@ -69,16 +100,18 @@ app.get('/api/getproducttable', (req,res) => {
 
 app.post('/api/addproducttable',(req, res) => {
     console.log(req.body.sql);
-    getQuery(req.body.sql).then((result) => {
+    getQuery(req.body.sql).then((err, result) => {
+        if (err) throw err;
         res.status(200).send("send.");
-    })
+    }).catch((err) => res.status(500).send(err.code));
 });
 
 app.post('/api/deleteproducttable',(req, res) => {
     console.log(req.body.sql);
-    getQuery(req.body.sql).then((result) => {
+    getQuery(req.body.sql).then((err, result) => {
+        if (err) throw err;
         res.status(200).send("send.");
-    })
+    }).catch((err) => res.status(500).send(err.code))
 });
 
 //starting app

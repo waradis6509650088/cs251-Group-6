@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from "react"
-const BACKENDIP = 'http://localhost:1144';
+export const BACKENDIP = 'http://localhost:1144';
 // the backend ip should be the actual backend ip, not localhost
 
 
@@ -121,9 +121,9 @@ export function Mainpage(){
                         <thead>
                             <tr>
                                 <th>Order ID</th>
+                                <th>Product Name</th>
                                 <th>Count</th>
-                                <th>Manager ID</th>
-                                <th>Retailer ID</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         {getorderdata()}

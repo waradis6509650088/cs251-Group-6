@@ -1,4 +1,6 @@
 export function OrderListPage(){
+
+
     return (
         <div class="orderlistpage">
             <text class="headertext">สถานะคำสั่งซื้อ</text>
@@ -17,8 +19,8 @@ export function OrderListPage(){
                         <td></td>
                         <td></td>
                         <td>
-                            <button class="valid-button"></button>
-                            <button class="invalid-button"></button>
+                            <button class="valid-button">Accept</button>
+                            <button class="invalid-button">Reject</button>
                         </td>
                     </tbody>
                 </table>

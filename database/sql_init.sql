@@ -70,14 +70,14 @@ CREATE TABLE Ordertable (
     Count int,
     ManagerID varchar(6),
     Rid varchar(6),
-    orderStatus varchar(10)
+    orderStatus varchar(10) default "WAITING"
 );
 
 DROP TABLE IF EXISTS OrderList;
 
 CREATE TABLE OrderList (
     OrderID varchar(10),
-    List varchar(5)
+    List varchar(50)
 );
 
 DROP TABLE IF EXISTS Product;

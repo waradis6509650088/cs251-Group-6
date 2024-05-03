@@ -7,7 +7,10 @@
     \c localhost:3306 -u root -p
 * pass = toor
 ## changes
+* change to mariadb
+* change table name Order to Ordertable: reserve word
 * change column type: Supplier[Contact] number -> str
 * change column type: Product[PID] number -> str
 * suggestion: Inventory product number shoud be product table PID
+* add column: orderStatus in Ordertable
 
