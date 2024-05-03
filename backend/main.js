@@ -136,6 +136,7 @@ app.post('/api/deleteproducttable',(req, res) => {
 //starting app
 db.connect(function(err){
     if(err) {
+        console.log(err)
         return 1;
     } else {
         console.log("Database is connected");

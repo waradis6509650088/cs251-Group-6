@@ -325,6 +325,7 @@ body {
   border-radius: 20px;
   padding-left: 1vw;
   font-size: 1.2rem;
+  transition-duration: 0.5s;
 }
 
 .inventorypage .searchbar {
@@ -368,12 +369,21 @@ body {
   background-color: #b3ab76;
 }
 
+.inventorypage .additem.input {
+  margin-right: 4rem;
+  height: 79vh;
+  margin-top: 1rem;
+  background-color: #dddddd;
+  border-radius: 20px;
+}
+
 .inventorypage .addproductinput {
-  width: 7vw;
-  height: 5vh;
+  width: 15vw;
+  height: 8vh;
   border-radius: 15px;
   padding-left: 1vw;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
+  margin-top: 1.5rem;
   font-size: 1rem;
   transition-duration: 0.5s;
 }
@@ -448,7 +458,7 @@ body {
   margin-left: 0rem;
   border: 0px;
   border-radius: 15px;
-  background-color: green;
+  background-color: rgb(74, 248, 74);
   font-size: 1.2rem;
 }
 
@@ -466,7 +476,7 @@ body {
   margin-right: -8rem;
   border: 0px;
   border-radius: 15px;
-  background-color: rgb(183, 3, 3);
+  background-color: rgb(251, 103, 103);
   font-size: 1.2rem;
 }
 
@@ -529,6 +539,30 @@ body {
 .orderlistpage tbody {
   padding-top: 5px;
 }
+
+.orderlistpage .column3 {
+  max-width: fit-content;
+  padding-right: 6px;
+  padding-left: 6px;
+  border-radius: 5px;
+}
+
+.orderlistpage .column3.WAITING {
+  background-color: #a8a8a8;
+}
+
+.orderlistpage .column3.REJECTED {
+  background-color: #fe8787;
+}
+
+.orderlistpage .column3.PROCESSING {
+  background-color: #ffe641;
+}
+
+.orderlistpage .column3.COMPLETED {
+  background-color: #0acc00;
+}
+
 
 .customerlistpage {
   height: 100%;

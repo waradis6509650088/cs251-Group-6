@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import profileImage from './image6.png';
 import { IsLogin } from './LoginPageHandler';
 
@@ -81,6 +81,16 @@ export function Login() {
     setPassword(event.target.value);
   };
 
+  const usernameInput = useRef();
+  const passwordInput = useRef();
+
+  function mockLogin(){
+    let name = usernameInput.current.value
+    let pass = passwordInput.current.value
+    if(name == 'Admin' && pass == 'nimda'){
+      setIsLogin(!isLogin)
+    }
+  }
   return (
       <div style={containerStyle}>
         <div style={boxStyle}>
@@ -91,6 +101,7 @@ export function Login() {
             value={username}
             onChange={handleUsernameChange}
             style={inputStyle}
+            ref={usernameInput}
           />
           <input
             type="password"
@@ -98,8 +109,9 @@ export function Login() {
             value={password}
             onChange={handlePasswordChange}
             style={inputStyle}
+            ref={passwordInput}
           />
-          <button style={buttonStyle} onClick={() => {setIsLogin(!isLogin)}}>Login</button>
+          <button style={buttonStyle} onClick={() => {mockLogin()}}>Login</button>
         </div>
       </div>
   );

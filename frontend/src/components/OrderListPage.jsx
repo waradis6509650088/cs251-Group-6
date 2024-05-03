@@ -1,5 +1,46 @@
+import { useState , useEffect} from "react";
+import { BACKENDIP } from "./Mainpage";
+
 export function OrderListPage(){
 
+    const [ordertable, setOrdertable] = useState();
+
+    function getorderdata(){
+        useEffect(() => {
+            fetch(BACKENDIP + '/api/getordertable')
+            .then(response => response.json())
+            .then((data) => {
+                setOrdertable(generateTable(data.data));
+            })
+            .catch(error => {
+                return (
+                    <tbody>
+                        <tr>
+                            <td>no info</td>
+                            <td>no info</td>
+                            <td>no info</td>
+                            <td>no info</td>
+                        </tr>
+                    </tbody>
+                )
+            })
+        }, [])
+        return ordertable;
+    }
+
+    function generateTable(data) {
+        return (
+            <tbody>
+                {data.map((item, index) => (
+                    <tr key={index}>
+                        {Object.values(item).map((value, index) => (
+                            <td key={index}><div class={"column" + index + " " + value}>{value}</div></td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
+        );
+    }
 
     return (
         <div class="orderlistpage">
@@ -8,21 +49,13 @@ export function OrderListPage(){
                 <table>
                     <thead>
                         <tr>
-                            <th>Preview</th>
-                            <th>Product ID</th>
-                            <th>Product name</th>
-                            <th>Shelf</th>
+                            <th>Order ID</th>
+                            <th>Product Name</th>
+                            <th>Count</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <button class="valid-button">Accept</button>
-                            <button class="invalid-button">Reject</button>
-                        </td>
-                    </tbody>
+                    {getorderdata()}
                 </table>
             </div>
         </div>

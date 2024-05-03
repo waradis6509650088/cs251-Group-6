@@ -9,6 +9,8 @@ services:
     networks:
         main-net:
             ipv4_address: 10.9.0.5
+    ports: 
+      - "3306:3306"
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect"]
       start_period: 10s

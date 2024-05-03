@@ -4,8 +4,6 @@ const BACKENDIP = 'http://localhost:1144';
 
 //pain
 import food1 from "./res/food_pic/food1.png"
-import food2 from "./res/food_pic/delicious food.png"
-import food3 from "./res/food_pic/meeeoo food.png"
 import missing from "./res/food_pic/missing.png"
 
 
@@ -13,6 +11,17 @@ export function Inventorypage(){
 
     const [productdata, setProductdata] = useState([])
     const [refresh, setRefresh] = useState(true);
+    const [addButton,setAddButton] = useState(false);
+
+    const shelfid = useRef();
+    const productid = useRef();
+    const retailid = useRef();
+    const managerid = useRef();
+
+    const orderid = useRef();
+    const productname = useRef();
+    const orderamount = useRef();
+
 
     function getProductdata(){
         useEffect(() => {
@@ -105,8 +114,6 @@ export function Inventorypage(){
         
     }
 
-    const [addButton,setAddButton] = useState(false);
-
     function changeAddButtonState(){
         setAddButton(!addButton);
     }
@@ -115,50 +122,27 @@ export function Inventorypage(){
         setRefresh(!refresh);
     }
 
-    const shelfid = useRef();
-    const productid = useRef();
-    const productname = useRef();
-    const orderid = useRef();
-    const orderamount = useRef();
-
     function addProductToDB(){
+        changeAddButtonState();
         let dataToSend = {
-            shelf:'"' + shelfid.current.value + '"',
-            ID:',"' + productid.current.value + '"',
-            name:',"' + productname.current.value + '"',
-            OID:',"' + orderid.current.value + '"',
-            amount: ',"'+ orderamount.current.value + '"'
+            shelf:shelfid.current.value,
+            ID:productid.current.value,
+            name:productname.current.value,
+            OID:orderid.current.value,
+            amount:orderamount.current.value,
+            retailerid:retailid.current.value,
+            MID:managerid.current.value
         }
         console.log(dataToSend.shelf);
-        changeAddButtonState();
         searchButton();
         let url = BACKENDIP + '/api/addproducttable';
-        let sql = 'insert into Product values '
-        + '(' + dataToSend.shelf + dataToSend.ID + dataToSend.name + dataToSend.OID + ');'
-        let sql2 = 'insert into Inventory values '
-        + '(' + dataToSend.shelf + dataToSend.ID 
-        + dataToSend.amount + dataToSend.amount + ');'
-        let jsonbody = {
-            sql:sql
-        }
-        let jsonbody2 = {
-            sql:sql2
-        }
         fetch(url, {
             method: "POST",
-            body: JSON.stringify(jsonbody),
+            body: JSON.stringify(dataToSend),
             headers: {
                 "Content-Type" : "application/json"
             }
         })
-        fetch(url, {
-            method: "POST",
-            body: JSON.stringify(jsonbody2),
-            headers: {
-                "Content-Type" : "application/json"
-            }
-        })
-        
         refreshFetch();
     }
 
@@ -168,11 +152,6 @@ export function Inventorypage(){
                 <>
                     <button class="additembutton" onClick={() => {changeAddButtonState();refreshFetch()}}>x</button>
                     <button class="addproduct" onClick={() => {addProductToDB();refreshFetch();}}>confirm</button>
-                    <input class="addproductinput" ref={shelfid} placeholder="Shelf" />
-                    <input class="addproductinput" ref={productid} placeholder="ID" />
-                    <input class="addproductinput" ref={productname} placeholder="name" />
-                    <input class="addproductinput" ref={orderid} placeholder="order" />
-                    <input class="addproductinput" ref={orderamount} placeholder="amount" />
                 </>
             );
 
@@ -189,6 +168,44 @@ export function Inventorypage(){
         }
     }
 
+    function changeDisplay(){
+        let tableReturn = (
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="piccolumn">Preview</th>
+                        <th>Product ID</th>
+                        <th>Product name</th>
+                        <th>Shelf</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                {getProductdata()}
+            </table>
+        </div>
+        )
+        if(!addButton){
+            return tableReturn;
+        }
+        else{
+            return(
+                <>
+                    <div class="additem input">
+                        <input class="addproductinput" ref={shelfid} placeholder="Shelf" /><br/>
+                        <input class="addproductinput" ref={productid} placeholder="Product ID" /><br/>
+                        <input class="addproductinput" ref={productname} placeholder="Product name" /><br/>
+                        <input class="addproductinput" ref={orderid} placeholder="order ID" />
+                        <input class="addproductinput" ref={orderamount} placeholder="amount" /><br/>
+                        <input class="addproductinput" ref={retailid} placeholder="retailer ID" /><br/>
+                        <input class="addproductinput" ref={managerid} placeholder="manager ID" /><br/>
+                    </div>
+                </>
+            )
+        }
+
+    }
+
 
     return (
         <div class="inventorypage">
@@ -196,20 +213,7 @@ export function Inventorypage(){
             <div class="searchbar">
                 {searchButton()}
             </div>
-            <div class="table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="piccolumn">Preview</th>
-                            <th>Product ID</th>
-                            <th>Product name</th>
-                            <th>Shelf</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    {getProductdata()}
-                </table>
-            </div>
+            {changeDisplay()}
         </div>
     )
 }
