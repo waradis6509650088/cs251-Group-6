@@ -12,6 +12,7 @@ import missing from "./res/food_pic/missing.png"
 export function Inventorypage(){
 
     const [productdata, setProductdata] = useState([])
+    const [refresh, setRefresh] = useState(true);
 
     function getProductdata(){
         useEffect(() => {
@@ -32,7 +33,7 @@ export function Inventorypage(){
                     </tbody>
                 )
             })
-        }, [])
+        }, [refresh])
         return productdata;
     }
 
@@ -72,6 +73,7 @@ export function Inventorypage(){
                 "Content-Type" : "application/json"
             }
         })
+        refreshFetch();
     }
 
     function generateTableWithPicture(data) {
@@ -90,7 +92,7 @@ export function Inventorypage(){
                         <td>{item.Pname}</td>
                         <td>{item.Shelf}</td>
                         <td>
-                            <button class="deletebutton" onClick={() => deleteEntry(item.Pname,item.PID,item.Shelf)}>
+                            <button class="deletebutton" onClick={() => {deleteEntry(item.Pname,item.PID,item.Shelf);refreshFetch();}}>
                                 <img class="deletebutton-image" src="https://cdn-icons-png.flaticon.com/512/484/484662.png"/>
                             </button>
                         </td>
@@ -109,6 +111,10 @@ export function Inventorypage(){
         setAddButton(!addButton);
     }
 
+    function refreshFetch(){
+        setRefresh(!refresh);
+    }
+
     const shelfid = useRef();
     const productid = useRef();
     const productname = useRef();
@@ -124,7 +130,7 @@ export function Inventorypage(){
             amount: ',"'+ orderamount.current.value + '"'
         }
         console.log(dataToSend.shelf);
-        setAddButton(!addButton);
+        changeAddButtonState();
         searchButton();
         let url = BACKENDIP + '/api/addproducttable';
         let sql = 'insert into Product values '
@@ -152,14 +158,16 @@ export function Inventorypage(){
                 "Content-Type" : "application/json"
             }
         })
+        
+        refreshFetch();
     }
 
     function searchButton(){
         if(addButton){
             return (
                 <>
-                    <button class="additembutton" onClick={() => changeAddButtonState()}>x</button>
-                    <button class="addproduct" onClick={() => addProductToDB()}>confirm</button>
+                    <button class="additembutton" onClick={() => {changeAddButtonState();refreshFetch()}}>x</button>
+                    <button class="addproduct" onClick={() => {addProductToDB();refreshFetch();}}>confirm</button>
                     <input class="addproductinput" ref={shelfid} placeholder="Shelf" />
                     <input class="addproductinput" ref={productid} placeholder="ID" />
                     <input class="addproductinput" ref={productname} placeholder="name" />
@@ -171,7 +179,10 @@ export function Inventorypage(){
         }else{
             return (
                 <>
-                    <button class="additembutton" onClick={() => changeAddButtonState()}>+</button>
+                    <button class="additembutton" onClick={() => {refreshFetch();}}>
+                        <img class="refresh" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-refresh-512.png"/>
+                    </button>
+                    <button class="additembutton left" onClick={() => {changeAddButtonState();refreshFetch();}}>+</button>
                     <input class="search" placeholder="Search product name..." />
                 </>
             );

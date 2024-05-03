@@ -7,6 +7,7 @@ body {
   font-family: "noto sans thai", sans-serif;
   font-size: normal;
   overflow-x: hidden;
+  transition-duration: 0.2s;
 }
 
 .sidebar {
@@ -327,6 +328,7 @@ body {
 }
 
 .inventorypage .searchbar {
+  white-space: nowrap;
   height: 2.7rem;
 }
 
@@ -373,6 +375,15 @@ body {
   padding-left: 1vw;
   margin-left: 0.5rem;
   font-size: 1rem;
+  transition-duration: 0.5s;
+}
+
+.inventorypage .refresh {
+  max-height: 1rem;
+}
+
+.inventorypage .additembutton.left {
+  margin-right: 1rem;
 }
 
 /* .inventorypage .searchbar .searchicon {
@@ -572,4 +583,25 @@ body {
 
 .customerlistpage .top-table {
   height: 2.7rem;
+}
+
+.customerlistpage .filterbutton {
+  border: 0px;
+  background-color: #ddd498;
+  width: 9rem;
+  height: 97%;
+  border-radius: 15px;
+  font-size: 1.1rem;
+}
+
+.customerlistpage .filterbutton.right {
+  margin-left: 0.5rem;
+}
+
+.customerlistpage .filterbutton:hover {
+  background-color: #b3ab76;
+}
+
+.customerlistpage .filterbutton:active {
+  background-color: #807a56;
 }

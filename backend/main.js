@@ -47,7 +47,7 @@ app.get('/api/getordertable', (req,res) => {
 });
 
 app.post('/api/createorder', (req, res) => {
-    let sql = "insert into Ordertable (OrderID, Count, ManagerID, RID) values " + req.body.order;
+    let sql = "insert into Ordertable (OrderID, Count, ManagerID, Rid) values " + req.body.order;
     let listsql = "insert into OrderList OrderID, List values " + req.body.orderlist;
     getQuery(listsql).then();
     getQuery(sql).then((result) => {
@@ -71,7 +71,7 @@ app.post('/api/updateorderstatus', (req, res) => {
 })
 
 app.get('/api/getincomingordertable', (req,res) => {
-    let sql = "select RID, OrderID, ManagerID, Count from Ordertable where orderStatus='WAITING';"
+    let sql = "select Rid, OrderID, ManagerID, Count from Ordertable where orderStatus='WAITING';"
     getQuery(sql).then((result) => {
         res.status(200).send({data: result});
     });
@@ -98,6 +98,25 @@ app.get('/api/getproducttable', (req,res) => {
     });
 });
 
+app.get('/api/getretailerinfo', (req, res) => {
+    let sql = "select " 
+    + "Retailer.Rid, Rname, Retailer_Contact.ReContact, District, SubDistrict, Province, Zipcode "
+    + "from Retailer, Retailer_Contact where Retailer_Contact.Rid=Retailer.Rid;"
+    getQuery(sql).then((result) => {
+        res.status(200).send({data:result});
+    })
+
+})
+
+app.get('/api/getsupplierinfo', (req, res) => {
+    let sql = "select " 
+    + "SupplierID, Sname, Contact, District, SubDistrict, Street, Province, Zipcode "
+    + "from Supplier;"
+    getQuery(sql).then((result) => {
+        res.status(200).send({data:result});
+    })
+
+})
 app.post('/api/addproducttable',(req, res) => {
     console.log(req.body.sql);
     getQuery(req.body.sql).then((err, result) => {

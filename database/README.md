@@ -11,6 +11,7 @@
 * change table name Order to Ordertable: reserve word
 * change column type: Supplier[Contact] number -> str
 * change column type: Product[PID] number -> str
+* change all contacts tables ID to be string
 * suggestion: Inventory product number shoud be product table PID
 * add column: orderStatus in Ordertable
 
